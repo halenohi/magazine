@@ -29,13 +29,13 @@
     label_color: green
   articles:
     -
-      review: true
+      review: false
       slug: blue-mountain
       title: ブルーマウンテン
       extra:
         excerpt: 卓越した香気を持ち、調和の取れた味わい、軽い口当りと滑らかな咽越しが特徴。
     -
-      review: true
+      review: false
       slug: kona
       title: コナ
       extra:

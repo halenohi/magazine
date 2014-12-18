@@ -1,0 +1,23 @@
+<h1>Magazine index</h1>
+
+<h2>Categories</h2>
+<ul>
+  <% @magazine_rack.data.each do |magazine| %>
+    <li><%= link_to magazine.category_name, magazine.category_index_path(magazine.category_slug) %></li>
+  <% end %>
+</ul>
+
+
+<h2><%= @category.present? ? @category.category_name : 'All' %> Articles</h2>
+<%= magazine_image_tag('cover_photo.jpg') %>
+<ul>
+  <% if @category.present? %>
+    <% @category.articles.each do |article| %>
+      <%= render 'magazine/articles/shared/list_article', article: article, category: @category %>
+    <% end %>
+  <% else %>
+    <% @magazine_rack.all_articles_with_category.each do |article, category| %>
+      <%= render 'magazine/articles/shared/list_article', article: article, category: category %>
+    <% end %>
+  <% end %>
+</ul>
