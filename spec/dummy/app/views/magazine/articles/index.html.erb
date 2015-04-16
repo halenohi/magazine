@@ -13,11 +13,15 @@
 <ul>
   <% if @category.present? %>
     <% @category.articles.each do |article| %>
-      <%= render 'magazine/articles/shared/list_article', article: article, category: @category %>
+      <% if magazine_inside_public_period?(article) %>
+        <%= render 'magazine/articles/shared/list_article', article: article, category: @category %>
+      <% end %>
     <% end %>
   <% else %>
     <% @magazine_rack.all_articles_with_category.each do |article, category| %>
-      <%= render 'magazine/articles/shared/list_article', article: article, category: category %>
+      <% if magazine_inside_public_period?(article) %>
+        <%= render 'magazine/articles/shared/list_article', article: article, category: category %>
+      <% end %>
     <% end %>
   <% end %>
 </ul>

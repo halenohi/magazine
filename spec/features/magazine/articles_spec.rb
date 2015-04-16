@@ -1,42 +1,104 @@
 require 'rails_helper'
 
 RSpec.describe 'Magazine Articles' do
-  feature 'visit /:mount_point' do
-    scenario do
-      visit magazine_path
-      # Category list
-      expect(page).to have_content('ドリップ')
-      expect(page).to have_content('コーヒー豆')
-
-      # Article list
-      expect(page).to have_selector('img[src="/images/magazine/cover_photo.jpg"]')
-      expect(page).to have_content('All Articles')
-      expect(page).to have_content('ウォータードリップ')
-      expect(page).to have_content('ペーパードリップ')
-      expect(page).to have_content('ネルドリップ')
-      expect(page).to have_content('ブルーマウンテン')
-      expect(page).to have_content('コナ')
-      expect(page).to have_content('キリマンジャロ')
-    end
+  after(:each) do
+    back_to_the_present
   end
 
-  feature 'visit /:mount_point/:category_slug' do
-    context 'exist category' do
+  feature 'visit /:mount_point' do
+    context 'when 2015-01-02' do
+      before do
+        time_travel_to(Time.parse('2015-01-02'))
+      end
+
       scenario do
-        visit magazine.category_index_path('drip')
+        visit magazine_path
         # Category list
         expect(page).to have_content('ドリップ')
         expect(page).to have_content('コーヒー豆')
 
         # Article list
-        expect(page).to have_selector('img[src="/images/magazine/drip/cover_photo.jpg"]')
-        expect(page).to have_content('ドリップ Articles')
+        expect(page).to have_selector('img[src="/images/magazine/cover_photo.jpg"]')
+        expect(page).to have_content('All Articles')
         expect(page).to have_content('ウォータードリップ')
         expect(page).to have_content('ペーパードリップ')
         expect(page).to have_content('ネルドリップ')
-        expect(page).to_not have_content('ブルーマウンテン')
-        expect(page).to_not have_content('コナ')
-        expect(page).to_not have_content('キリマンジャロ')
+        expect(page).to have_content('ブルーマウンテン')
+        expect(page).to have_content('コナ')
+        expect(page).to have_content('キリマンジャロ')
+      end
+    end
+
+    context 'when 2015-01-04' do
+      before do
+        time_travel_to(Time.parse('2015-01-04'))
+      end
+
+      scenario do
+        visit magazine_path
+        # Category list
+        expect(page).to have_content('ドリップ')
+        expect(page).to have_content('コーヒー豆')
+
+        # Article list
+        expect(page).to have_selector('img[src="/images/magazine/cover_photo.jpg"]')
+        expect(page).to have_content('All Articles')
+        expect(page).to_not have_content('ウォータードリップ')
+        expect(page).to have_content('ペーパードリップ')
+        expect(page).to have_content('ネルドリップ')
+        expect(page).to have_content('ブルーマウンテン')
+        expect(page).to have_content('コナ')
+        expect(page).to have_content('キリマンジャロ')
+      end
+    end
+  end
+
+  feature 'visit /:mount_point/:category_slug' do
+    context 'exist category' do
+      context 'when 2015-01-01' do
+        before do
+          time_travel_to(Time.parse('2015-01-01'))
+        end
+
+        scenario do
+          visit magazine.category_index_path('drip')
+          # Category list
+          expect(page).to have_content('ドリップ')
+          expect(page).to have_content('コーヒー豆')
+
+          # Article list
+          expect(page).to have_selector('img[src="/images/magazine/drip/cover_photo.jpg"]')
+          expect(page).to have_content('ドリップ Articles')
+          expect(page).to have_content('ウォータードリップ')
+          expect(page).to have_content('ペーパードリップ')
+          expect(page).to have_content('ネルドリップ')
+          expect(page).to_not have_content('ブルーマウンテン')
+          expect(page).to_not have_content('コナ')
+          expect(page).to_not have_content('キリマンジャロ')
+        end
+      end
+
+      context 'when 2015-01-04' do
+        before do
+          time_travel_to(Time.parse('2015-01-04'))
+        end
+
+        scenario do
+          visit magazine.category_index_path('drip')
+          # Category list
+          expect(page).to have_content('ドリップ')
+          expect(page).to have_content('コーヒー豆')
+
+          # Article list
+          expect(page).to have_selector('img[src="/images/magazine/drip/cover_photo.jpg"]')
+          expect(page).to have_content('ドリップ Articles')
+          expect(page).to_not have_content('ウォータードリップ')
+          expect(page).to have_content('ペーパードリップ')
+          expect(page).to have_content('ネルドリップ')
+          expect(page).to_not have_content('ブルーマウンテン')
+          expect(page).to_not have_content('コナ')
+          expect(page).to_not have_content('キリマンジャロ')
+        end
       end
     end
 
