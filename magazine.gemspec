@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "hashie", "~> 3.3", ">= 3.3.2"
 
   s.add_development_dependency "rspec-rails", "~> 3.1", ">= 3.1.0"
-  s.add_development_dependency "capybara", "~> 2.4", "> 2.4.4"
+  s.add_development_dependency "capybara", "~> 2.4", ">= 2.4.4"
   s.add_development_dependency "tapp", "~> 1.4", ">= 1.4.1"
   s.add_development_dependency "sqlite3", "~> 1.3", ">= 1.3.10"
   s.add_development_dependency "delorean", "~> 2.1", ">= 2.1.0"
