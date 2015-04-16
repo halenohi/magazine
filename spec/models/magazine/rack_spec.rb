@@ -17,6 +17,8 @@ RSpec.describe Magazine::Rack do
           "extra"=>{"label_color"=>"orange"},
           "articles"=>
            [{"review"=>false,
+             "started_at"=>Time.parse('2015-01-01').to_date,
+             "ended_at"=>Time.parse('2015-01-03').to_date,
              "slug"=>"water",
              "title"=>"ウォータードリップ",
              "extra"=>{"excerpt"=>"専用の機材を用い水でコーヒーを抽出する方法。"}},
@@ -32,11 +34,11 @@ RSpec.describe Magazine::Rack do
           "category_name"=>"コーヒー豆",
           "extra"=>{"label_color"=>"green"},
           "articles"=>
-           [{"review"=>true,
+           [{"review"=>false,
              "slug"=>"blue-mountain",
              "title"=>"ブルーマウンテン",
              "extra"=>{"excerpt"=>"卓越した香気を持ち、調和の取れた味わい、軽い口当りと滑らかな咽越しが特徴。"}},
-            {"review"=>true,
+            {"review"=>false,
              "slug"=>"kona",
              "title"=>"コナ",
              "extra"=>{"excerpt"=>"非常に強い酸味とコク・風味を持つ。"}},
@@ -65,6 +67,8 @@ RSpec.describe Magazine::Rack do
            "extra"=>{"label_color"=>"orange"},
            "articles"=>
             [{"review"=>false,
+             "started_at"=>Time.parse('2015-01-01').to_date,
+             "ended_at"=>Time.parse('2015-01-03').to_date,
               "slug"=>"water",
               "title"=>"ウォータードリップ",
               "extra"=>{"excerpt"=>"専用の機材を用い水でコーヒーを抽出する方法。"}},
@@ -104,6 +108,8 @@ RSpec.describe Magazine::Rack do
       it 'should return article' do
         expect(subject).to eq(
           {"review"=>false,
+           "started_at"=>Time.parse('2015-01-01').to_date,
+           "ended_at"=>Time.parse('2015-01-03').to_date,
            "slug"=>"water",
            "title"=>"ウォータードリップ",
            "extra"=>{"excerpt"=>"専用の機材を用い水でコーヒーを抽出する方法。"}}
@@ -126,6 +132,8 @@ RSpec.describe Magazine::Rack do
     it 'return assigned (article => category) hash' do
       expect(magazine_rack.all_articles_with_category.to_hash).to eq(
         {{"review"=>false,
+          "started_at"=>Time.parse('2015-01-01').to_date,
+          "ended_at"=>Time.parse('2015-01-03').to_date,
           "slug"=>"water",
           "title"=>"ウォータードリップ",
           "extra"=>{"excerpt"=>"専用の機材を用い水でコーヒーを抽出する方法。"}}=>
@@ -146,14 +154,14 @@ RSpec.describe Magazine::Rack do
           {"category_slug"=>"drip",
            "category_name"=>"ドリップ",
            "extra"=>{"label_color"=>"orange"}},
-         {"review"=>true,
+         {"review"=>false,
           "slug"=>"blue-mountain",
           "title"=>"ブルーマウンテン",
           "extra"=>{"excerpt"=>"卓越した香気を持ち、調和の取れた味わい、軽い口当りと滑らかな咽越しが特徴。"}}=>
           {"category_slug"=>"beans",
            "category_name"=>"コーヒー豆",
            "extra"=>{"label_color"=>"green"}},
-         {"review"=>true,
+         {"review"=>false,
           "slug"=>"kona",
           "title"=>"コナ",
           "extra"=>{"excerpt"=>"非常に強い酸味とコク・風味を持つ。"}}=>
