@@ -1,5 +1,6 @@
 module Magazine
   class ArticlesController < ::ApplicationController
+    include Magazine::ApplicationHelper
     helper Magazine::ApplicationHelper
     before_action :set_magazine_rack
     helper_method :article_in_review?
@@ -30,15 +31,19 @@ module Magazine
         @category = @magazine_rack.find_category(category_slug)
         @article = @magazine_rack.find_article(category_slug, article_slug)
 
-        not_found if @article.nil? || article_in_review?(@article)
+        not_found if @article.nil? || !article_public?(@article)
       end
 
       def set_magazine_rack
         @magazine_rack = Magazine::Rack.new
       end
 
-      def article_in_review?(article)
-        !(!article.review || (article.review && authorize))
+      def article_public?(article)
+        if !article.review && magazine_inside_public_period?(article)
+          true
+        else
+          article.review && authorize
+        end
       end
 
       def not_found
