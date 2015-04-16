@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    magazine (0.0.1)
-      hashie
-      rails (~> 4.1.8)
+    magazine (0.0.3)
+      hashie (~> 3.3.2)
+      rails (> 4.1)
 
 GEM
   remote: https://rubygems.org/
@@ -42,10 +42,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chronic (0.10.2)
+    delorean (2.1.0)
+      chronic
     diff-lcs (1.2.5)
     erubis (2.7.0)
     hashie (3.3.2)
-    hike (1.2.3)
     i18n (0.6.11)
     json (1.8.1)
     mail (2.6.3)
@@ -53,7 +55,6 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.5.0)
-    multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     rack (1.5.2)
@@ -91,12 +92,9 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    sprockets (2.12.3)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
+    sprockets (3.0.1)
       rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.2)
+    sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -105,7 +103,6 @@ GEM
       thor
     thor (0.19.1)
     thread_safe (0.3.4)
-    tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     xpath (2.0.0)
@@ -115,8 +112,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
+  capybara (~> 2.4.4)
+  delorean (~> 2.1.0)
   magazine!
-  rspec-rails
-  sqlite3
-  tapp
+  rspec-rails (~> 3.1.0)
+  sqlite3 (~> 1.3.10)
+  tapp (~> 1.4.1)
