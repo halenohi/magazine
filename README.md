@@ -31,10 +31,10 @@ It is array of category and articles hierarchy
       title: Water drip
     -
       slug: nel
-      title Nel drip
+      title: Nel drip
     -
       slug: paper
-      title Paper drip
+      title: Paper drip
 -
   category_slug: beans
   category_name: Coffee beans
@@ -44,7 +44,7 @@ It is array of category and articles hierarchy
       title: Blue mountain's blend
     -
       slug: kona
-      title Kona's blend
+      title: Kona's blend
 ```
 
 Step 2: make config/initializer/magazine.rb  
